@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+</head>
+<body>
+<tr th:each="item : ${items}">
+  <td th:text="${item.model}"></td>
+  <td th:text="${item.releaseDate}"></td>
+  <td th:text="${item.ram}"></td>
+  <td th:text="${item.rom}"></td>
+  <td th:text="${item.color}"></td>
+  <td th:text="${item.displayType}"></td>
+  <td th:text="${item.displaySize}"></td>
+</tr>
+
+</body>
+</html>

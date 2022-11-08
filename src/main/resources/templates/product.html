@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+</head>
+<body>
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <span th:text="${product.phone.model}">/</span>
+                <span th:text="${product.phone.releaseDate}">/</span>
+                <span th:text="${product.phone.ram}">/</span>
+                <span th:text="${product.phone.rom}">/</span>
+                <span th:text="${product.phone.color}">/</span>
+                <span th:text="${product.phone.displayType}">/</span>
+                <span th:text="${product.phone.displaySize}">/</span>
+            </div>
+            </div>
+        </div>
+
+
+    <tr th:each="productPhone : ${product.productPhones}">
+        <td th:text="${productPhone.getShop().getName()}"></td>
+        <td th:text="${productPhone.getPrice()}"></td>
+        <form th:action="@{/bucket/add-item}" method="post">
+            <input th:value="${productPhone.getId()}" name="productPhoneId" type="hidden">
+        </form>
+    </tr>
+
+
+    <tr th:each="comment : ${product.comments}">
+        <td th:text="${comment.getDescription()}"></td>
+    </tr>
+    <form th:action="@{/comment/add}" method="post">
+        <textarea name="description"></textarea>
+        <input type="hidden" th:value="${product.phone.model}">
+    </form>
+</div>
+</body>
+</html>
